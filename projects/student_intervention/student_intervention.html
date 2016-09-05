@@ -12118,6 +12118,16 @@ Testing set has 95 samples.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Training-and-Evaluating-Models">Training and Evaluating Models<a class="anchor-link" href="#Training-and-Evaluating-Models">&#182;</a></h2><p>In this section, you will choose 3 supervised learning models that are appropriate for this problem and available in <code>scikit-learn</code>. You will first discuss the reasoning behind choosing these three models by considering what you know about the data and each model's strengths and weaknesses. You will then fit the model to varying sizes of training data (100 data points, 200 data points, and 300 data points) and measure the F<sub>1</sub> score. You will need to produce three tables (one for each model) that shows the training set size, training time, prediction time, F<sub>1</sub> score on the training set, and F<sub>1</sub> score on the testing set.</p>
+<p><strong>The following supervised learning models are currently available in</strong> <a href="http://scikit-learn.org/stable/supervised_learning.html"><code>scikit-learn</code></a> <strong>that you may choose from:</strong></p>
+<ul>
+<li>Gaussian Naive Bayes (GaussianNB)</li>
+<li>Decision Trees</li>
+<li>Ensemble Methods (Bagging, AdaBoost, Random Forest, Gradient Boosting)</li>
+<li>K-Nearest Neighbors (KNeighbors)</li>
+<li>Stochastic Gradient Descent (SGDC)</li>
+<li>Support Vector Machines (SVM)</li>
+<li>Logistic Regression</li>
+</ul>
 
 </div>
 </div>
@@ -12127,7 +12137,13 @@ Testing set has 95 samples.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Question-2---Model-Application">Question 2 - Model Application<a class="anchor-link" href="#Question-2---Model-Application">&#182;</a></h3><p><em>List three supervised learning models that are appropriate for this problem. What are the general applications of each model? What are their strengths and weaknesses? Given what you know about the data, why did you choose these models to be applied?</em></p>
+<h3 id="Question-2---Model-Application">Question 2 - Model Application<a class="anchor-link" href="#Question-2---Model-Application">&#182;</a></h3><p><em>List three supervised learning models that are appropriate for this problem. For each model chosen</em></p>
+<ul>
+<li>Describe one real-world application in industry where the model can be applied. <em>(You may need to do a small bit of research for this — give references!)</em> </li>
+<li>What are the strengths of the model; when does it perform well? </li>
+<li>What are the weaknesses of the model; when does it perform poorly?</li>
+<li>What makes this model a good candidate for the problem, given what you know about the data?</li>
+</ul>
 
 </div>
 </div>
@@ -12137,10 +12153,10 @@ Testing set has 95 samples.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>As said before, this project will require a classification supervised learning model, thus we can use, to answer the proposed question, three different models: Support Vector Machine (SVM), Decision Tree and K Nearest Neighbors.<br>
-Support Vector Machine separates the data in decision planes. It is very effective in high dimensional planes and very versatile, but is not very effective in datasets with lots of features or a very noisy one because it's difficult to define clear margins of separation.<br>
-Decision Tree model is a non-parametric method that splits the data in nodes. It is easy to understand and interpret and able to handle categorical and numerical data. On the other hand, it tends to create over complex trees that don't generalize well the data, i.e. overfits the data, and can be unstable because small variations in the data may change completely how the model maps the information from the data.<br>
-K Nearest Neighbors is a non-generalizing learning method that simply stores the training data and uses to predict new data based on the nearest data from the training set. This method is very effective where the decision boundary is not very clear. On the other hand, this method is very computational costly.<br>
+<p><strong>Answer: </strong>As said before, this project will require a classification supervised learning model, thus we can use, to answer the proposed question, three different models: Support Vector Machine (SVM), Decision Tree and K Nearest Neighbors (KNN).<br>
+Support Vector Machine separates the data in decision planes. It is very effective in high dimensional planes and very versatile, but is not very effective in datasets with lots of features or a very noisy one because it's difficult to define clear margins of separation. SVM has been used to recognize hand-written characters (<a href="https://en.wikipedia.org/wiki/Support_vector_machine#Applications">Wikipedia/SVM</a>) and also in financial market problems (<a href="http://svms.org/finance/">svms.org</a>). If the data is linearly separable this model will be very effective and not very computational costly.<br>
+Decision Tree model is a non-parametric method that splits the data in nodes. It is easy to understand and interpret and able to handle categorical and numerical data. On the other hand, it tends to create over complex trees that don't generalize well the data, i.e. overfits the data, and can be unstable because small variations in the data may change completely how the model maps the information from the data. Airbnb uses decision tree by using another algorithm called random forest that builds several decision trees (<a href="http://nerds.airbnb.com/unboxing-the-random-forest-classifier/">Airbnb</a>). The use of this model here will be good if the data is not linearly separable and has to much features for SVM to handle and it is still a simple model with low computational cost.<br>
+K Nearest Neighbors (KNN) is a non-generalizing learning method that simply stores the training data and uses it to predict new data based on the nearest data from the training set. This method is very effective where the decision boundary is not very clear. On the other hand, this method is very computational costly. KNN can be used in various economic problems (<a href="http://www.academia.edu/4607757/Application_of_K-Nearest_Neighbor_KNN_Approach_for_Predicting_Economic_Events_Theoretical_Background">Application of K-Nearest Neighbor (KNN) Approach for Predicting Economic Events</a>). And besides its greater computational cost KNN might be better to predict if the data here presented is not linearly separable and would be good to compare with the Decision Tree Model that can easyly overfit.
 With those models we can predict the output of new data with easy to understand models and small computational and programming costs thus being very effective on the budget.</p>
 
 </div>
@@ -12239,7 +12255,7 @@ With those models we can predict the output of new data with easy to understand 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
@@ -12280,66 +12296,66 @@ With those models we can predict the output of new data with easy to understand 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training a SVC using a training set size of 100. . .
-Trained model in 0.0033 seconds
-Made predictions in 0.0021 seconds.
+Trained model in 0.0045 seconds
+Made predictions in 0.0015 seconds.
 F1 score for training set: 0.8354.
 Made predictions in 0.0010 seconds.
 F1 score for test set: 0.8333.
 
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0048 seconds
-Made predictions in 0.0031 seconds.
+Trained model in 0.0044 seconds
+Made predictions in 0.0034 seconds.
 F1 score for training set: 0.8608.
-Made predictions in 0.0015 seconds.
+Made predictions in 0.0017 seconds.
 F1 score for test set: 0.8079.
 
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0099 seconds
-Made predictions in 0.0077 seconds.
+Trained model in 0.0128 seconds
+Made predictions in 0.0063 seconds.
 F1 score for training set: 0.8715.
-Made predictions in 0.0028 seconds.
+Made predictions in 0.0025 seconds.
 F1 score for test set: 0.7973.
 
 Training a DecisionTreeClassifier using a training set size of 100. . .
-Trained model in 0.0013 seconds
-Made predictions in 0.0002 seconds.
+Trained model in 0.0024 seconds
+Made predictions in 0.0009 seconds.
 F1 score for training set: 1.0000.
-Made predictions in 0.0002 seconds.
+Made predictions in 0.0003 seconds.
 F1 score for test set: 0.7009.
 
 Training a DecisionTreeClassifier using a training set size of 200. . .
-Trained model in 0.0017 seconds
-Made predictions in 0.0002 seconds.
+Trained model in 0.0022 seconds
+Made predictions in 0.0003 seconds.
 F1 score for training set: 1.0000.
 Made predictions in 0.0002 seconds.
 F1 score for test set: 0.7402.
 
 Training a DecisionTreeClassifier using a training set size of 300. . .
-Trained model in 0.0028 seconds
-Made predictions in 0.0008 seconds.
+Trained model in 0.0023 seconds
+Made predictions in 0.0003 seconds.
 F1 score for training set: 1.0000.
-Made predictions in 0.0006 seconds.
+Made predictions in 0.0002 seconds.
 F1 score for test set: 0.7619.
 
 Training a KNeighborsClassifier using a training set size of 100. . .
-Trained model in 0.0012 seconds
-Made predictions in 0.0023 seconds.
+Trained model in 0.0044 seconds
+Made predictions in 0.0024 seconds.
 F1 score for training set: 0.7826.
-Made predictions in 0.0018 seconds.
+Made predictions in 0.0015 seconds.
 F1 score for test set: 0.6885.
 
 Training a KNeighborsClassifier using a training set size of 200. . .
-Trained model in 0.0011 seconds
-Made predictions in 0.0057 seconds.
+Trained model in 0.0008 seconds
+Made predictions in 0.0034 seconds.
 F1 score for training set: 0.8276.
-Made predictions in 0.0026 seconds.
+Made predictions in 0.0019 seconds.
 F1 score for test set: 0.7626.
 
 Training a KNeighborsClassifier using a training set size of 300. . .
-Trained model in 0.0011 seconds
-Made predictions in 0.0092 seconds.
+Trained model in 0.0010 seconds
+Made predictions in 0.0069 seconds.
 F1 score for training set: 0.8696.
-Made predictions in 0.0027 seconds.
+Made predictions in 0.0025 seconds.
 F1 score for test set: 0.7273.
 
 </pre>
@@ -12486,7 +12502,7 @@ F1 score for test set: 0.7273.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Question-3---Chosing-the-Best-Model">Question 3 - Chosing the Best Model<a class="anchor-link" href="#Question-3---Chosing-the-Best-Model">&#182;</a></h3><p><em>Based on the experiments you performed earlier, in one to two paragraphs, explain to the board of supervisors what single model you chose as the best model. Which model is generally the most appropriate based on the available data, limited resources, cost, and performance?</em></p>
+<h3 id="Question-3---Choosing-the-Best-Model">Question 3 - Choosing the Best Model<a class="anchor-link" href="#Question-3---Choosing-the-Best-Model">&#182;</a></h3><p><em>Based on the experiments you performed earlier, in one to two paragraphs, explain to the board of supervisors what single model you chose as the best model. Which model is generally the most appropriate based on the available data, limited resources, cost, and performance?</em></p>
 
 </div>
 </div>
@@ -12506,7 +12522,7 @@ F1 score for test set: 0.7273.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Question-4---Model-in-Layman's-Terms">Question 4 - Model in Layman's Terms<a class="anchor-link" href="#Question-4---Model-in-Layman's-Terms">&#182;</a></h3><p><em>In one to two paragraphs, explain to the board of directors in layman's terms how the final model chosen is supposed to work. For example if you've chosen to use a decision tree or a support vector machine, how does the model go about making a prediction?</em></p>
+<h3 id="Question-4---Model-in-Layman's-Terms">Question 4 - Model in Layman's Terms<a class="anchor-link" href="#Question-4---Model-in-Layman's-Terms">&#182;</a></h3><p><em>In one to two paragraphs, explain to the board of directors in layman's terms how the final model chosen is supposed to work. Be sure that you are describing the major qualities of the model, such as how the model is trained and how the model makes a prediction. Avoid using advanced mathematical or technical jargon, such as describing equations or discussing the algorithm implementation.</em></p>
 
 </div>
 </div>
@@ -12516,7 +12532,10 @@ F1 score for test set: 0.7273.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The Support Vector Machine finds decision boundaries that divides the training data in one or more planes that enables the classification of new data based on what it has learned.</p>
+<p><strong>Answer: </strong> The Support Vector Machine finds decision boundaries that divides the training data in one or more hyperplanes that enables the classification of new data based on what it has learned. To divide the data, it finds where the data has the maximum margin between the different clusters, i.e. the line that maximizes the differences of the classification as you can see on the picture below.
+<img src="https://github.com/danresende/machine-learning/blob/master/projects/student_intervention/SVM_2.png?raw=true" alt="Max Margin in SVM">
+For non-linearly separable data, this model uses a "kernel trick", a mathematical transformation of the data to turn them linearly separable. This kernel trick makes the model able to separate the data and maximize the margin between the different clusters like it was linear.
+<img src="https://github.com/danresende/machine-learning/blob/master/projects/student_intervention/kerneltrick.jpeg?raw=true" alt="Kernel trick"></p>
 
 </div>
 </div>
@@ -12547,7 +12566,7 @@ F1 score for test set: 0.7273.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -12580,23 +12599,6 @@ F1 score for test set: 0.7273.
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0076 seconds.
-Tuned model has a training F1 score of 0.8969.
-Made predictions in 0.0022 seconds.
-Tuned model has a testing F1 score of 0.7973.
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
