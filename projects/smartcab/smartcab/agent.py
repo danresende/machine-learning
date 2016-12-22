@@ -37,8 +37,12 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Update epsilon using a decay function of your choice
+        self.epsilon = self.epsilon
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
+        if testing == True:
+            self.epsilon = 0
+            self.alpha = 0
 
         return None
 
@@ -56,7 +60,7 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Set 'state' as a tuple of relevant data for the agent        
-        state = None
+        state = (waypoint, inputs['light'], inputs['oncoming'], inputs['left'], deadline)
 
         return state
 
@@ -95,7 +99,7 @@ class LearningAgent(Agent):
         # Set the agent state and default action
         self.state = state
         self.next_waypoint = self.planner.next_waypoint()
-        action = None
+        action = random.choice([None, 'left', 'right', 'forward'])
 
         ########### 
         ## TO DO ##
@@ -145,7 +149,7 @@ def run():
     #   verbose     - set to True to display additional output from the simulation
     #   num_dummies - discrete number of dummy agents in the environment, default is 100
     #   grid_size   - discrete number of intersections (columns, rows), default is (8, 6)
-    env = Environment()
+    env = Environment(verbose=True)
     
     ##############
     # Create the driving agent
