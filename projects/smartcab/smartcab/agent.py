@@ -37,9 +37,8 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Update epsilon using a decay function of your choice
-        if self.t > 1.0:
-            self.epsilon -= 0.05
-        self.t += 1
+        self.epsilon *= math.cos((self.t - 1.0 )/ 100.0)
+        self.t += 1.0
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
         if testing:
@@ -62,7 +61,7 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Set 'state' as a tuple of relevant data for the agent
-        state = (waypoint, inputs['light'], inputs['oncoming'], inputs['left'], deadline)
+        state = (waypoint, inputs['light'], inputs['oncoming'], inputs['left'])
 
         return state
 
@@ -190,7 +189,7 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay=0.01, log_metrics=True)#, optimized=True)
+    sim = Simulator(env, update_delay=0.01, log_metrics=True, optimized=True)
 
     ##############
     # Run the simulator
