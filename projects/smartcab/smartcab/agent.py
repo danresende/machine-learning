@@ -37,7 +37,11 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Update epsilon using a decay function of your choice
-        self.epsilon *= math.cos((self.t - 1.0 )/ 100.0)
+        # Optimized (uncomment to use):
+        # self.epsilon *= math.cos((self.t - 1.0 )/ 100.0)
+        # Default (comment to use optimized version)
+        if self.t > 1:
+            self.epsilon -= 0.05
         self.t += 1.0
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
@@ -174,7 +178,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent, learning=True)
+    agent = env.create_agent(LearningAgent, learning=False)
 
     ##############
     # Follow the driving agent
@@ -189,7 +193,7 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env, update_delay=0.01, log_metrics=True, optimized=True)
+    sim = Simulator(env, update_delay=0.01, log_metrics=False, optimized=False)
 
     ##############
     # Run the simulator
