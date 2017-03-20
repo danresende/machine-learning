@@ -1,3 +1,6 @@
+# Git
+.gitignore
+
 # Mac OS
 .DS_Store
 
@@ -61,9 +64,12 @@ docs/_build/
 # PyBuilder
 target/
 
-#Ipython Notebook
+# Ipython Notebook
 .ipynb_checkpoints
 
-#Floydhub
+# Floydhub
 .floydexpt
 .floydignore
+
+# Data
+*.mat
