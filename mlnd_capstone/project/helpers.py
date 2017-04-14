@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
-def display_sample_images(features, labels, n, normalized=False):
+def display_sample_images(features, labels, n, test_data=None, normalized=False):
     """
     Displays a set of images from the dataset.
     
@@ -18,6 +18,8 @@ def display_sample_images(features, labels, n, normalized=False):
     for i in range(n):
         plt.subplot(1,n,i + 1)
         image_num = np.random.randint(0, high=len(labels))
+        if test_data is not None:
+        	image_num = test_data
         if normalized:
             image_num = np.random.randint(0, high=10)
             sample_image = np.squeeze(features[image_num], axis=2)
