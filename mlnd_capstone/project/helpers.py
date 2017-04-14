@@ -76,22 +76,35 @@ def one_hot_encode(labels):
     array of one-hot encoded labels
     """
     result = []
-    for i in range(len(x)):
-        result.append([1 if x[i] == j + 1 else 0 for j in range(10)])
+    for i in range(len(labels)):
+        result.append([1 if labels[i] == j + 1 else 0 for j in range(10)])
     return np.array(result)
 
 
-def batch_creator(features, labels, batch_size, val_size=None):
-    for start in range(0, features.shape[3], batch_size):
-        end = min(start + batch_size, features.shape[3])
-        if val_size is not None:
-            feat_batch_train, \
-            feat_batch_val,\
-            lab_batch_train, \
-            lab_batch_val = train_test_split(features[:,:,:,start:end],
-                labels[start:end],
-                test_size=val_size)
+def batch_creator(features, labels, batch_size, val_size=None, flatted=False):
+    if flatted:
+        for start in range(0, len(features), batch_size):
+            end = min(start + batch_size, len(features))
+            if val_size is not None:
+                feat_batch_train, \
+                feat_batch_val,\
+                lab_batch_train, \
+                lab_batch_val = train_test_split(features[start:end,:], labels[start:end], test_size=val_size)
             
-            yield feat_batch_train, feat_batch_val, lab_batch_train, lab_batch_val
-        else:
-            yield features[:,:,:,start:end], labels[start:end]
+                yield feat_batch_train, feat_batch_val, lab_batch_train, lab_batch_val
+            else:
+                yield features[start:end,:], labels[start:end]
+    else:
+        for start in range(0, features.shape[3], batch_size):
+            end = min(start + batch_size, features.shape[3])
+            if val_size is not None:
+                feat_batch_train, \
+                feat_batch_val,\
+                lab_batch_train, \
+                lab_batch_val = train_test_split(features[:,:,:,start:end],
+                    labels[start:end],
+                    test_size=val_size)
+            
+                yield feat_batch_train, feat_batch_val, lab_batch_train, lab_batch_val
+            else:
+                yield features[:,:,:,start:end], labels[start:end]
