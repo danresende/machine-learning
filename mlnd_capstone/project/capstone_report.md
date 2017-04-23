@@ -29,7 +29,11 @@ I'll use the MNIST-like format of the Street View House Number([4](http://ufldl.
 
 Since it is a classification supervised problem, to evaluate the model and assess if it learns how to efficiently recognized the center digit in the images I'll measure how accurate the model is, i.e. if the result of the model is the same as the label that it has.
 
+This metric is a good choice for the task at hand, because it is very simple to calculate and, since the objective is to tell in which category the input is, without the possibility of being on more than one label at the same time, it clearly tell how well the model is doing its job.
+
 To do this in practice, I'll take the argmax of the softmax output, the probability of the image being a given number, and compare to the label of that image.
+
+In sum, the accuracy it the number of correct outputs divided by the total of outputs.
 
 Just as a sanity check, it can be said that the model is completely useless if the accuracy is equal or less than 10%, because, since the data is label from 1 to 10 (with the label 10 meaning the digit 0), a random guess would give a 10% accuracy.
 
@@ -64,7 +68,7 @@ To tackle this problem I will use the VGG16 neural network architecture. This is
 
 ![VGG16](https://heuritech.files.wordpress.com/2016/02/vgg16_croped.png?w=470)
 
-In a broader sense the neural network I will use here is a parametric supervised learning procedure that tries to find patterns and correlations using the pixels of the image as inputs to output, in this case, the center digit of the image. It is a parametric procedure because it has a fixed number of parameters, 138 parameters in this model, and it is a supervised procedure because it will 'learn' how to configure it self by comparing the result it got to the labels pre defined.
+In a broader sense the neural network I will use here is a parametric supervised learning procedure that tries to find patterns and correlations using the pixels of the image as inputs to output, in this case, the center digit of the image. It is a parametric procedure because it has a fixed number of parameters, 138 million parameters in this model, and it is a supervised procedure because it will 'learn' how to configure it self by comparing the result it got to the labels pre defined.
 
 A convolutional neural network it is a set of weights and bias that receives part of the input which allows to encode certain proprities into the architecture making the forward function more efficient to implement and reduces the amount of paramenters in the network.
 
@@ -113,6 +117,14 @@ With the trained model I tested it using the 1000 test vectors and finally I too
 ### Refinement
 
 Since one of the objectives of this project was to see how well the VGG16 architecture would be with this particular dataset I tried as much as possible to not diverge from the original way that the authors used it with the 2014 ImageNet Challenge.
+
+The architecture used in the ImageNet Challenge can be separete in four groups of convolutinal structure all of them using a 3 by 3 window and 2 of fully connected. The width of convolutional layers (the number of channels) starts at 64 for the first group and grows by a factor of 2 after each max-pooling until it reaches 512. The fuly connected layers starts with two layers with 4096 nodes and the last one is the one changed to fit this problem specificaly. In the original dataset the last layer has 1000 nodes because the ImageNet Challenge had a 1000 different labels, but here, since I'm trying to recognize the digits, it needs to be change to 10 nodes.
+
+Below, it is possible to see the original architecture, where the only difference between the one used here is the last fully connected layer as commented before.
+
+***The original VGG16 architecture***
+
+![VGG architecture](link)
 
 
 ## IV. Results
