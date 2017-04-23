@@ -120,11 +120,11 @@ Since one of the objectives of this project was to see how well the VGG16 archit
 
 The architecture used in the ImageNet Challenge can be separete in four groups of convolutinal structure all of them using a 3 by 3 window and 2 of fully connected. The width of convolutional layers (the number of channels) starts at 64 for the first group and grows by a factor of 2 after each max-pooling until it reaches 512. The fuly connected layers starts with two layers with 4096 nodes and the last one is the one changed to fit this problem specificaly. In the original dataset the last layer has 1000 nodes because the ImageNet Challenge had a 1000 different labels, but here, since I'm trying to recognize the digits, it needs to be change to 10 nodes.
 
-Below, it is possible to see the original architecture, where the only difference between the one used here is the last fully connected layer as commented before.
+Below, it is possible to see the original architecture (model D), where the only difference between the one used here is the last fully connected layer as commented before.
 
 ***The original VGG16 architecture***
 
-![VGG architecture](link)
+![VGG architecture](https://github.com/danresende/machine-learning/blob/master/mlnd_capstone/project/VGG%20architecture.png?raw=true)
 
 
 ## IV. Results
